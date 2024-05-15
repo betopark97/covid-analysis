@@ -13,11 +13,6 @@ db_params = {
     "password":os.environ.get('PASSWORD'),
     "port":"5432"
 }
-# Path to the CSV file
-csv_file = "/Users/robertopark/Documents/code-projects/datascience-projects/corona-analysis/data/covidVaccinations.csv"
-
-# Table name where you want to import the data
-table_name = "covid_deaths"
 
 # Create a connection to the PostgreSQL server
 conn = psycopg2.connect(
@@ -27,7 +22,7 @@ conn = psycopg2.connect(
     password=db_params['password']
 )
 
-# Connect to the 'soccer' database
+# Connect to the database
 db_params['database'] = 'covidAnalysis'
 engine = create_engine(f'postgresql://{db_params["user"]}:{db_params["password"]}@{db_params["host"]}/{db_params["database"]}')
 
