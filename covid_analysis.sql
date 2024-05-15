@@ -1,3 +1,4 @@
+-- Queries for Exploratory Data Analysis
 SELECT * FROM covid_deaths
 WHERE continent IS NOT NULL
 ORDER BY location, date;
@@ -123,7 +124,7 @@ WHERE deaths.continent IS NOT NULL AND deaths.location = 'South Korea'
 SELECT 
 	*,
 	(rolling_people_vaccinated/population) * 100
-FROM PopvsVac
+FROM PopvsVac;
 
 -- Create View to store data for later visualizations
 DROP VIEW IF EXISTS percent_pop_vacc;
@@ -146,3 +147,46 @@ SELECT
 	*,
 	(rolling_people_vaccinated/population) * 100 pop_vac_perc
 FROM PopvsVac;
+
+
+-- Queries for Tableau Dashboard
+-- 1.
+SELECT 
+	SUM(new_cases) AS total_cases
+	,SUM(new_deaths) AS total_deaths
+	,(SUM(new_deaths)/SUM(new_cases)*100) AS death_percentage
+FROM covid_deaths
+WHERE continent IS NOT NULL
+ORDER BY 1,2;
+
+-- 2.
+SELECT
+	location
+	,SUM(new_deaths) AS total_death_count
+FROM covid_deaths
+WHERE 
+	continent IS NULL AND 
+	location IN ('Europe', 'North America', 'South America', 'Asia', 'Africa', 'Oceania')
+GROUP BY location
+ORDER BY total_death_count DESC;
+
+-- 3.
+SELECT
+	location
+	,population
+	,COALESCE(MAX(total_cases),0) AS highest_infection_count
+	,COALESCE((MAX(total_cases/population)*100),0) AS percent_population_infected
+FROM covid_deaths
+GROUP BY location, population
+ORDER BY percent_population_infected DESC;
+
+-- 4.
+SELECT
+	location
+	,population
+	,date
+	,COALESCE(MAX(total_cases),0) AS highest_infection_count
+	,COALESCE(MAX(total_cases/population)*100,0) AS percent_population_infected
+FROM covid_deaths
+GROUP BY location, population, date
+ORDER BY percent_population_infected DESC;
