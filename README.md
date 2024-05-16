@@ -5,8 +5,8 @@ Edouard Mathieu, Hannah Ritchie, Lucas Rodés-Guirao, Cameron Appel, Charlie Gia
 <hr/>  
 
 ## Dashboard (Tableau):  
-[Tableau Public Link](https://public.tableau.com/app/profile/roberto.parkr/viz/Covid19Analysis_17157630593080/Dashboard1)
-![dashboard preview](./dashboard-preview)
+[Tableau Public Link](https://public.tableau.com/app/profile/roberto.parkr/viz/Covid19Analysis_17157630593080/Dashboard1)  
+![dashboard preview](./dashboard-preview.png)
 <hr/>
 
 ## Description:
