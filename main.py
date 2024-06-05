@@ -28,8 +28,8 @@ engine = create_engine(f'postgresql://{db_params["user"]}:{db_params["password"]
 
 # Define the file paths for your CSV files
 csv_files = {
-    'covid_deaths': '/Users/robertopark/Documents/code-projects/datascience-projects/corona-analysis/data/covidDeaths.csv',
-    'covid_vaccinations': '/Users/robertopark/Documents/code-projects/datascience-projects/corona-analysis/data/covidVaccinations.csv'
+    'covid_deaths': './data/covidDeaths.csv',
+    'covid_vaccinations': './data/covidVaccinations.csv'
 }
 
 # Load and display the contents of each CSV file to check
